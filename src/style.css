@@ -1,0 +1,565 @@
+:root {
+  color-scheme: light;
+  --ink: #142033;
+  --muted: #657184;
+  --line: #d9e2ef;
+  --soft: #f5f8fc;
+  --paper: #ffffff;
+  --blue: #0756a6;
+  --blue-deep: #073b73;
+  --gold: #c58a2b;
+  --green: #2f7664;
+  --shadow: 0 20px 50px rgba(20, 32, 51, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(7, 59, 115, 0.94);
+  color: #fff;
+  backdrop-filter: blur(14px);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1180px, calc(100% - 32px));
+  min-height: 66px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  font-weight: 800;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.nav-links a {
+  min-height: 38px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.hero {
+  position: relative;
+  min-height: 650px;
+  overflow: hidden;
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(5, 35, 70, 0.92) 0%, rgba(5, 35, 70, 0.7) 42%, rgba(5, 35, 70, 0.18) 100%),
+    url("https://zhaosheng.csu.edu.cn/images/25/04/24/12osyytp3c/_DSC5138.jpg") center / cover no-repeat;
+}
+
+.hero-inner {
+  display: grid;
+  align-content: center;
+  width: min(1180px, calc(100% - 32px));
+  min-height: 650px;
+  margin: 0 auto;
+  padding: 88px 0 132px;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: #ffd98a;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 720px;
+  margin: 0;
+  font-size: clamp(44px, 8vw, 86px);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.hero-copy {
+  max-width: 650px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font-weight: 800;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.btn.primary {
+  background: #fff;
+  color: var(--blue-deep);
+}
+
+.btn.secondary {
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  color: #fff;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.quick-facts {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: min(1180px, calc(100% - 32px));
+  transform: translateX(-50%);
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+
+.fact {
+  min-height: 108px;
+  padding: 24px;
+  border-right: 1px solid var(--line);
+}
+
+.fact:last-child {
+  border-right: 0;
+}
+
+.fact strong {
+  display: block;
+  color: var(--blue);
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1;
+}
+
+.fact span {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+section {
+  padding: 82px 0;
+}
+
+.wrap {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(280px, 0.56fr);
+  align-items: end;
+  gap: 48px;
+  margin-bottom: 36px;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.story {
+  padding: 36px;
+  border-left: 5px solid var(--blue);
+  background: var(--soft);
+}
+
+.story p {
+  margin: 0 0 18px;
+  color: #334158;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.story p:last-child {
+  margin-bottom: 0;
+}
+
+.motto-panel {
+  display: grid;
+  align-content: end;
+  min-height: 390px;
+  padding: 36px;
+  border-radius: 8px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(7, 59, 115, 0.08), rgba(7, 59, 115, 0.92)),
+    url("https://zhaosheng.csu.edu.cn/images/25/04/24/12osyytp3c/_DSC5134.jpg") center / cover no-repeat;
+  color: #fff;
+}
+
+.motto-panel small {
+  color: #ffd98a;
+  font-weight: 800;
+}
+
+.motto-panel b {
+  display: block;
+  margin-top: 12px;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.2;
+}
+
+.feature-band {
+  background: #f2f6fb;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.feature {
+  min-height: 226px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.feature .num {
+  color: var(--gold);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.feature h3 {
+  margin: 16px 0 12px;
+  font-size: 22px;
+  letter-spacing: 0;
+}
+
+.feature p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.schools {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.academics-copy {
+  margin-top: 18px;
+}
+
+.discipline-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.discipline-list li {
+  min-height: 54px;
+  padding: 15px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: #334158;
+  font-weight: 700;
+}
+
+.campus-card {
+  margin-top: 28px;
+  padding: 30px;
+  border-radius: 8px;
+  background: var(--blue-deep);
+  color: #fff;
+}
+
+.campus-card h3 {
+  margin: 0 0 16px;
+  font-size: 25px;
+  letter-spacing: 0;
+}
+
+.campus-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.85;
+}
+
+.life-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 22px;
+}
+
+.life-photo {
+  min-height: 420px;
+  border-radius: 8px;
+  background: url("https://zhaosheng.csu.edu.cn/images/25/04/24/12osyytp3c/_DSC5124.jpg") center / cover no-repeat;
+}
+
+.life-list {
+  display: grid;
+  gap: 14px;
+}
+
+.life-item {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.life-item h3 {
+  margin: 0 0 8px;
+  color: var(--blue-deep);
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+.life-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.cta {
+  padding: 0;
+  background: var(--blue-deep);
+  color: #fff;
+}
+
+.cta-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  padding: 48px 0;
+}
+
+.cta h2 {
+  color: #fff;
+}
+
+.cta p {
+  max-width: 760px;
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+}
+
+.cta-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  background: #0b1c35;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .nav {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 14px 0;
+    gap: 10px;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+  }
+
+  .hero,
+  .hero-inner {
+    min-height: 760px;
+  }
+
+  .hero-inner {
+    align-content: start;
+    padding-top: 74px;
+  }
+
+  .quick-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fact:nth-child(2) {
+    border-right: 0;
+  }
+
+  .fact:nth-child(-n+2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-head,
+  .about-grid,
+  .schools,
+  .life-grid,
+  .cta-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav,
+  .wrap,
+  .hero-inner,
+  .quick-facts {
+    width: min(100% - 22px, 1180px);
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .hero,
+  .hero-inner {
+    min-height: 850px;
+  }
+
+  .quick-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .fact {
+    min-height: 88px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 18px;
+  }
+
+  .fact:last-child {
+    border-bottom: 0;
+  }
+
+  section {
+    padding: 58px 0;
+  }
+
+  .story,
+  .motto-panel,
+  .campus-card {
+    padding: 24px;
+  }
+
+  .discipline-list {
+    grid-template-columns: 1fr;
+  }
+
+  .life-photo {
+    min-height: 300px;
+  }
+}
