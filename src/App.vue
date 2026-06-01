@@ -1,6 +1,11 @@
 <script setup>
 const schoolUrl = 'https://www.csu.edu.cn/'
 const admissionUrl = 'https://zhaosheng.csu.edu.cn/'
+const overviewUrl = 'https://www.csu.edu.cn/zjzn/xxgk.htm'
+const dataUrl = 'https://www.csu.edu.cn/zjzn/sjzn.htm'
+const disciplinesUrl = 'https://www.csu.edu.cn/xyxk1/xkzy.htm'
+const studentWorkUrl = 'https://xgw.csu.edu.cn/'
+const newsStudentUrl = 'https://news.csu.edu.cn/xstd.htm'
 
 const navItems = [
   { label: '学校概况', href: '#about' },
@@ -12,20 +17,28 @@ const navItems = [
 
 const quickFacts = [
   {
-    value: '2000',
+    value: '2000年',
+    title: '合并组建年份',
     label: '由原中南工业大学、湖南医科大学、长沙铁道学院合并组建',
+    url: overviewUrl,
   },
   {
-    value: '11',
+    value: '11个门类',
+    title: '学科门类',
     label: '涵盖哲、经、法、教、文、理、工、医、管、艺、交叉学科等门类',
+    url: disciplinesUrl,
   },
   {
-    value: '5',
+    value: '5个学科',
+    title: '“双一流”建设学科',
     label: '数学、材料、冶金、矿业、交通运输工程入选“双一流”建设学科',
+    url: disciplinesUrl,
   },
   {
     value: '316.90万㎡',
+    title: '产权占地面积',
     label: '学校产权占地面积，跨湘江两岸，依岳麓、临湘水',
+    url: dataUrl,
   },
 ]
 
@@ -33,14 +46,17 @@ const features = [
   {
     title: '工科优势突出',
     body: '围绕材料、冶金、矿业、土木、交通运输等优势方向，持续服务制造强国、交通强国和资源安全等领域。',
+    url: disciplinesUrl,
   },
   {
     title: '湘雅医学底蕴',
     body: '湘雅医学传统深厚，医学教育、临床医学与生命科学研究相互支撑，形成面向人民健康的育人与科研体系。',
+    url: 'https://xysm.csu.edu.cn/',
   },
   {
     title: '交叉融合培养',
     body: '依托综合性大学平台，推进新工科、新医科与信息技术、管理科学、人文社科融合，培养复合型创新人才。',
+    url: 'https://news.csu.edu.cn/info/1003/161534.htm',
   },
 ]
 
@@ -59,14 +75,17 @@ const lifeItems = [
   {
     title: '科研训练',
     body: '学生可参与导师课题、学科竞赛、创新创业训练，在真实项目中提升研究与协作能力。',
+    url: studentWorkUrl,
   },
   {
     title: '开放交流',
     body: '学校推进国际合作与校际交流，鼓励学生拓展全球视野与跨文化沟通能力。',
+    url: 'https://intl.csu.edu.cn/',
   },
   {
     title: '综合发展',
     body: '丰富的社团、志愿服务、文体活动与实践平台，为学生提供面向社会的成长空间。',
+    url: newsStudentUrl,
   },
 ]
 </script>
@@ -101,10 +120,18 @@ const lifeItems = [
       </div>
 
       <div class="quick-facts" aria-label="学校速览">
-        <div v-for="fact in quickFacts" :key="fact.value" class="fact">
+        <a
+          v-for="fact in quickFacts"
+          :key="fact.value"
+          class="fact"
+          :href="fact.url"
+          target="_blank"
+          rel="noreferrer"
+        >
           <strong>{{ fact.value }}</strong>
+          <b>{{ fact.title }}</b>
           <span>{{ fact.label }}</span>
-        </div>
+        </a>
       </div>
     </section>
 
@@ -148,11 +175,18 @@ const lifeItems = [
         </div>
 
         <div class="features">
-          <article v-for="(feature, index) in features" :key="feature.title" class="feature">
+          <a
+            v-for="(feature, index) in features"
+            :key="feature.title"
+            class="feature"
+            :href="feature.url"
+            target="_blank"
+            rel="noreferrer"
+          >
             <span class="num">{{ String(index + 1).padStart(2, '0') }}</span>
             <h3>{{ feature.title }}</h3>
             <p>{{ feature.body }}</p>
-          </article>
+          </a>
         </div>
       </div>
     </section>
@@ -196,10 +230,17 @@ const lifeItems = [
         <div class="life-grid">
           <div class="life-photo" role="img" aria-label="中南大学校园风景"></div>
           <div class="life-list">
-            <article v-for="item in lifeItems" :key="item.title" class="life-item">
+            <a
+              v-for="item in lifeItems"
+              :key="item.title"
+              class="life-item"
+              :href="item.url"
+              target="_blank"
+              rel="noreferrer"
+            >
               <h3>{{ item.title }}</h3>
               <p>{{ item.body }}</p>
-            </article>
+            </a>
           </div>
         </div>
       </div>
