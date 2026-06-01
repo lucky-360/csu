@@ -12,34 +12,41 @@ const navItems = [
 
 const quickFacts = [
   {
-    value: '2000',
+    value: '2000年',
+    title: '合并组建年份',
     label: '由原中南工业大学、湖南医科大学、长沙铁道学院合并组建',
   },
   {
-    value: '11',
-    label: '涵盖哲、经、法、教、文、理、工、医、管、艺、交叉学科等门类',
+    value: '11个门类',
+    title: '覆盖范围',
+    label: '涵盖哲、经、法、教、文、理、工、医、管、艺、交叉学科',
   },
   {
-    value: '5',
-    label: '数学、材料、冶金、矿业、交通运输工程入选“双一流”建设学科',
+    value: '5个学科',
+    title: '“双一流”入选',
+    label: '数学、材料、冶金、矿业、交通运输工程入选建设名单',
   },
   {
     value: '316.90万㎡',
-    label: '学校产权占地面积，跨湘江两岸，依岳麓、临湘水',
+    title: '校园占地',
+    label: '学校产权土地面积，跨湘江两岸，依岳麓、临湘水',
   },
 ]
 
 const features = [
   {
     title: '工科优势突出',
+    tag: '工程现场',
     body: '围绕材料、冶金、矿业、土木、交通运输等优势方向，持续服务制造强国、交通强国和资源安全等领域。',
   },
   {
     title: '湘雅医学底蕴',
+    tag: '生命健康',
     body: '湘雅医学传统深厚，医学教育、临床医学与生命科学研究相互支撑，形成面向人民健康的育人与科研体系。',
   },
   {
     title: '交叉融合培养',
+    tag: '创新平台',
     body: '依托综合性大学平台，推进新工科、新医科与信息技术、管理科学、人文社科融合，培养复合型创新人才。',
   },
 ]
@@ -69,6 +76,31 @@ const lifeItems = [
     body: '丰富的社团、志愿服务、文体活动与实践平台，为学生提供面向社会的成长空间。',
   },
 ]
+
+const campusScenes = [
+  {
+    title: '校门地标',
+    image: '/images/csu-sina-01.jpg',
+  },
+  {
+    title: '湖畔楼宇',
+    image: '/images/csu-sina-02.jpg',
+  },
+]
+
+const lifeScenes = [
+  {
+    title: '校园入口',
+    image: '/images/csu-win3000-01.jpg',
+  },
+]
+
+const changshaLinks = [
+  { label: '岳麓山', url: 'https://www.csyouji.cn/yls' },
+  { label: '橘子洲', url: 'https://www.yuelu.gov.cn/zjxq/xqsj/202506/t20250630_11901612.html' },
+  { label: '湘江新区', url: 'https://www.yuelu.gov.cn/zjxq/' },
+  { label: '马栏山视频', url: 'https://cyfz.csmls.gov.cn/' },
+]
 </script>
 
 <template>
@@ -88,21 +120,40 @@ const lifeItems = [
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg-stack" aria-hidden="true">
+        <span class="hero-bg bg-campus-day"></span>
+        <span class="hero-bg bg-campus-night"></span>
+        <span class="hero-bg bg-student-activity"></span>
+        <span class="hero-bg bg-student-sports"></span>
+        <span class="hero-bg bg-stone"></span>
+      </div>
       <div class="hero-inner">
-        <p class="eyebrow">Central South University</p>
-        <h1 id="hero-title">中南大学</h1>
-        <p class="hero-copy">
-          坐落于湖南长沙，是教育部直属全国重点大学，入选国家“双一流”“211工程”“985工程”，以工学、医学、管理学等多学科交叉融合见长。
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#about">查看学校概况</a>
-          <a class="btn secondary" :href="schoolUrl" target="_blank" rel="noreferrer">访问官网</a>
+        <div class="hero-copy-block">
+          <p class="eyebrow">Central South University</p>
+          <h1 id="hero-title">中南大学</h1>
+          <p class="hero-copy">
+            坐落于湖南长沙，是教育部直属全国重点大学，入选国家“双一流”“211工程”“985工程”，以工学、医学、管理学等多学科交叉融合见长。
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#about">查看学校概况</a>
+            <a class="btn secondary" :href="schoolUrl" target="_blank" rel="noreferrer">访问官网</a>
+          </div>
+        </div>
+
+        <div class="hero-collage" aria-label="校园多场景">
+          <figure v-for="scene in campusScenes" :key="scene.title">
+            <img :src="scene.image" :alt="scene.title" />
+          </figure>
+          <figure>
+            <img src="/images/csu-maigoo-01.jpg" alt="中南大学校园风景" />
+          </figure>
         </div>
       </div>
 
       <div class="quick-facts" aria-label="学校速览">
         <div v-for="fact in quickFacts" :key="fact.value" class="fact">
           <strong>{{ fact.value }}</strong>
+          <b>{{ fact.title }}</b>
           <span>{{ fact.label }}</span>
         </div>
       </div>
@@ -135,6 +186,21 @@ const lifeItems = [
             <b>知行合一<br />经世致用</b>
           </aside>
         </div>
+
+        <div class="about-mosaic" aria-label="学校发展脉络">
+          <div>
+            <span>1903年</span>
+            <strong>实业教育源流</strong>
+          </div>
+          <div>
+            <span>1914年</span>
+            <strong>湘雅医学传承</strong>
+          </div>
+          <div>
+            <span>2000年</span>
+            <strong>三校合并组建</strong>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -149,7 +215,10 @@ const lifeItems = [
 
         <div class="features">
           <article v-for="(feature, index) in features" :key="feature.title" class="feature">
-            <span class="num">{{ String(index + 1).padStart(2, '0') }}</span>
+            <div class="feature-top">
+              <span class="num">特色 {{ String(index + 1).padStart(2, '0') }}</span>
+              <span class="feature-tag">{{ feature.tag }}</span>
+            </div>
             <h3>{{ feature.title }}</h3>
             <p>{{ feature.body }}</p>
           </article>
@@ -176,10 +245,17 @@ const lifeItems = [
         </div>
 
         <div class="campus-card">
-          <h3>在长沙读大学</h3>
-          <p>
-            中南大学位于历史文化名城长沙，校园依山傍水，连接岳麓山、湘江与城市创新生态。学习、科研、临床、工程实践与城市生活在这里形成紧密联动。
-          </p>
+          <div>
+            <h3>在长沙读大学</h3>
+            <p>
+              中南大学位于历史文化名城长沙，校园依山傍水，连接岳麓山、湘江与城市创新生态。学习、科研、临床、工程实践与城市生活在这里形成紧密联动。
+            </p>
+          </div>
+          <div class="academic-scenes" aria-label="长沙相关入口">
+            <a v-for="link in changshaLinks" :key="link.label" :href="link.url" target="_blank" rel="noreferrer">
+              {{ link.label }}
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -194,7 +270,14 @@ const lifeItems = [
         </div>
 
         <div class="life-grid">
-          <div class="life-photo" role="img" aria-label="中南大学校园风景"></div>
+          <div class="life-gallery" aria-label="中南大学校园风景">
+            <img
+              v-for="scene in lifeScenes"
+              :key="scene.title"
+              :src="scene.image"
+              :alt="scene.title"
+            />
+          </div>
           <div class="life-list">
             <article v-for="item in lifeItems" :key="item.title" class="life-item">
               <h3>{{ item.title }}</h3>

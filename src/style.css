@@ -9,6 +9,9 @@
   --blue-deep: #073b73;
   --gold: #c58a2b;
   --green: #2f7664;
+  --red: #b24738;
+  --teal-soft: #e7f3ef;
+  --gold-soft: #fff4dc;
   --shadow: 0 20px 50px rgba(20, 32, 51, 0.14);
 }
 
@@ -104,14 +107,83 @@ img {
   min-height: 650px;
   overflow: hidden;
   color: #fff;
+  background: #052346;
+}
+
+.hero::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
   background:
-    linear-gradient(90deg, rgba(5, 35, 70, 0.92) 0%, rgba(5, 35, 70, 0.7) 42%, rgba(5, 35, 70, 0.18) 100%),
-    url("https://zhaosheng.csu.edu.cn/images/25/04/24/12osyytp3c/_DSC5138.jpg") center / cover no-repeat;
+    linear-gradient(90deg, rgba(5, 35, 70, 0.95) 0%, rgba(5, 35, 70, 0.78) 48%, rgba(5, 35, 70, 0.38) 100%);
+}
+
+.hero-bg-stack,
+.hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg-stack {
+  z-index: 0;
+}
+
+.hero-bg {
+  opacity: 0;
+  background-position: center;
+  background-size: cover;
+  animation: heroFade 30s infinite;
+}
+
+.bg-campus-day {
+  background-image: url("/images/hero-theme-campus-day.jpg");
+  animation-delay: 0s;
+}
+
+.bg-campus-night {
+  background-image: url("/images/hero-theme-campus-night.jpg");
+  animation-delay: 6s;
+}
+
+.bg-student-activity {
+  background-image: url("/images/hero-theme-student-activity.png");
+  animation-delay: 12s;
+}
+
+.bg-student-sports {
+  background-image: url("/images/hero-theme-student-sports.png");
+  animation-delay: 18s;
+}
+
+.bg-stone {
+  background-image: url("/images/hero-theme-stone.jpg");
+  animation-delay: 24s;
+}
+
+@keyframes heroFade {
+  0%,
+  16% {
+    opacity: 1;
+  }
+
+  22%,
+  94% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 2;
   display: grid;
-  align-content: center;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.72fr);
+  align-items: center;
+  gap: 42px;
   width: min(1180px, calc(100% - 32px));
   min-height: 650px;
   margin: 0 auto;
@@ -148,6 +220,34 @@ h1 {
   margin-top: 34px;
 }
 
+.hero-collage {
+  display: grid;
+  grid-template-columns: 0.86fr 1fr;
+  grid-auto-rows: 170px;
+  gap: 14px;
+  align-self: center;
+}
+
+.hero-collage figure {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
+}
+
+.hero-collage figure:first-child {
+  grid-row: span 2;
+}
+
+.hero-collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -175,6 +275,7 @@ h1 {
 
 .quick-facts {
   position: absolute;
+  z-index: 2;
   left: 50%;
   bottom: 0;
   display: grid;
@@ -205,9 +306,17 @@ h1 {
   line-height: 1;
 }
 
+.fact b {
+  display: block;
+  margin-top: 8px;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.35;
+}
+
 .fact span {
   display: block;
-  margin-top: 10px;
+  margin-top: 6px;
   color: var(--muted);
   line-height: 1.45;
 }
@@ -243,6 +352,11 @@ h2 {
   line-height: 1.9;
 }
 
+#about {
+  background:
+    linear-gradient(180deg, #fff 0%, #fff 64%, #f8fbf4 64%, #f8fbf4 100%);
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -253,7 +367,8 @@ h2 {
 .story {
   padding: 36px;
   border-left: 5px solid var(--blue);
-  background: var(--soft);
+  background:
+    linear-gradient(135deg, rgba(255, 244, 220, 0.85), rgba(245, 248, 252, 0.95));
 }
 
 .story p {
@@ -275,8 +390,8 @@ h2 {
   border-radius: 8px;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(7, 59, 115, 0.08), rgba(7, 59, 115, 0.92)),
-    url("https://zhaosheng.csu.edu.cn/images/25/04/24/12osyytp3c/_DSC5134.jpg") center / cover no-repeat;
+    linear-gradient(180deg, rgba(15, 75, 84, 0.08), rgba(7, 59, 115, 0.9)),
+    url("/images/csu-official-motto-new.jpg") center / cover no-repeat;
   color: #fff;
 }
 
@@ -292,8 +407,48 @@ h2 {
   line-height: 1.2;
 }
 
+.about-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.about-mosaic div {
+  min-height: 118px;
+  padding: 22px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.about-mosaic div:nth-child(1) {
+  background: var(--green);
+}
+
+.about-mosaic div:nth-child(2) {
+  background: var(--red);
+}
+
+.about-mosaic div:nth-child(3) {
+  background: var(--gold);
+}
+
+.about-mosaic span {
+  display: block;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.about-mosaic strong {
+  display: block;
+  margin-top: 14px;
+  font-size: 16px;
+}
+
 .feature-band {
-  background: #f2f6fb;
+  background:
+    linear-gradient(90deg, #f2f6fb 0%, #f2f6fb 52%, #e7f3ef 52%, #e7f3ef 100%);
 }
 
 .features {
@@ -310,10 +465,35 @@ h2 {
   background: var(--paper);
 }
 
+.feature:nth-child(2) {
+  background: var(--gold-soft);
+}
+
+.feature:nth-child(3) {
+  background: var(--teal-soft);
+}
+
+.feature-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .feature .num {
   color: var(--gold);
   font-weight: 900;
   font-size: 14px;
+}
+
+.feature-tag {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(7, 86, 166, 0.1);
+  color: var(--blue-deep);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
 }
 
 .feature h3 {
@@ -357,6 +537,18 @@ h2 {
   transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
+.discipline-list li:nth-child(3n+1) {
+  border-left: 5px solid var(--blue);
+}
+
+.discipline-list li:nth-child(3n+2) {
+  border-left: 5px solid var(--green);
+}
+
+.discipline-list li:nth-child(3n) {
+  border-left: 5px solid var(--gold);
+}
+
 .discipline-list li:hover {
   border-color: var(--blue);
   box-shadow: 0 10px 24px rgba(7, 86, 166, 0.12);
@@ -376,10 +568,14 @@ h2 {
 }
 
 .campus-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.56fr);
+  gap: 28px;
+  align-items: center;
   margin-top: 28px;
   padding: 30px;
   border-radius: 8px;
-  background: var(--blue-deep);
+  background: linear-gradient(135deg, rgba(7, 59, 115, 0.98), rgba(47, 118, 100, 0.94));
   color: #fff;
 }
 
@@ -395,16 +591,60 @@ h2 {
   line-height: 1.85;
 }
 
+.academic-scenes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.academic-scenes a {
+  display: grid;
+  place-items: center;
+  min-height: 74px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.academic-scenes a:hover {
+  border-color: rgba(255, 217, 138, 0.76);
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
 .life-grid {
   display: grid;
   grid-template-columns: 1.25fr 0.75fr;
   gap: 22px;
 }
 
-.life-photo {
-  min-height: 420px;
+.life-gallery {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  grid-template-rows: repeat(2, 200px);
+  grid-auto-rows: 200px;
+  gap: 14px;
+}
+
+.life-gallery img {
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
-  background: url("https://zhaosheng.csu.edu.cn/images/25/04/24/12osyytp3c/_DSC5124.jpg") center / cover no-repeat;
+  object-fit: cover;
+}
+
+.life-gallery img:first-child {
+  grid-row: span 2;
+}
+
+.life-gallery img:only-child {
+  grid-column: 1 / -1;
+  grid-row: span 2;
 }
 
 .life-list {
@@ -417,6 +657,14 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--paper);
+}
+
+.life-item:nth-child(2) {
+  background: #fdf7ec;
+}
+
+.life-item:nth-child(3) {
+  background: #eef7f4;
 }
 
 .life-item h3 {
@@ -434,7 +682,9 @@ h2 {
 
 .cta {
   padding: 0;
-  background: var(--blue-deep);
+  background:
+    linear-gradient(120deg, rgba(7, 59, 115, 0.98), rgba(178, 71, 56, 0.9)),
+    url("/images/csu-official-life.jpg") center / cover no-repeat;
   color: #fff;
 }
 
@@ -497,8 +747,13 @@ footer a {
   }
 
   .hero-inner {
+    grid-template-columns: 1fr;
     align-content: start;
     padding-top: 74px;
+  }
+
+  .hero-collage {
+    grid-auto-rows: 130px;
   }
 
   .quick-facts {
@@ -516,6 +771,7 @@ footer a {
   .section-head,
   .about-grid,
   .schools,
+  .campus-card,
   .life-grid,
   .cta-inner {
     grid-template-columns: 1fr;
@@ -576,7 +832,18 @@ footer a {
     grid-template-columns: 1fr;
   }
 
-  .life-photo {
-    min-height: 300px;
+  .about-mosaic,
+  .academic-scenes,
+  .life-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .life-gallery {
+    grid-template-rows: repeat(3, 180px);
+    grid-auto-rows: 180px;
+  }
+
+  .life-gallery img:first-child {
+    grid-row: auto;
   }
 }
