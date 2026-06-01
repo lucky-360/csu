@@ -5,7 +5,7 @@ const overviewUrl = 'https://www.csu.edu.cn/zjzn/xxgk.htm'
 const dataUrl = 'https://www.csu.edu.cn/zjzn/sjzn.htm'
 const disciplinesUrl = 'https://www.csu.edu.cn/xyxk1/xkzy.htm'
 const studentWorkUrl = 'https://xgw.csu.edu.cn/'
-const newsStudentUrl = 'https://news.csu.edu.cn/xstd.htm'
+const newsStudentUrl = 'https://news.csu.edu.cn/sp/'
 
 const navItems = [
   { label: '学校概况', href: '#about' },
@@ -48,18 +48,21 @@ const features = [
     tag: '工程现场',
     body: '围绕材料、冶金、矿业、土木、交通运输等优势方向，持续服务制造强国、交通强国和资源安全等领域。',
     url: disciplinesUrl,
+    image: '/images/compact/history-industrial-education.jpg',
   },
   {
     title: '湘雅医学底蕴',
     tag: '生命健康',
     body: '湘雅医学传统深厚，医学教育、临床医学与生命科学研究相互支撑，形成面向人民健康的育人与科研体系。',
     url: 'https://xysm.csu.edu.cn/',
+    image: '/images/compact/history-xiangya-medicine.jpg',
   },
   {
     title: '交叉融合培养',
     tag: '创新平台',
     body: '依托综合性大学平台，推进新工科、新医科与信息技术、管理科学、人文社科融合，培养复合型创新人才。',
     url: 'https://news.csu.edu.cn/info/1003/161534.htm',
+    image: '/images/compact/life-research-training.jpg',
   },
 ]
 
@@ -79,51 +82,94 @@ const lifeItems = [
     title: '科研训练',
     body: '学生可参与导师课题、学科竞赛、创新创业训练，在真实项目中提升研究与协作能力。',
     url: studentWorkUrl,
+    image: '/images/compact/life-research-training.jpg',
   },
   {
     title: '开放交流',
     body: '学校推进国际合作与校际交流，鼓励学生拓展全球视野与跨文化沟通能力。',
     url: 'https://intl.csu.edu.cn/',
+    image: '/images/compact/life-open-exchange.jpg',
   },
   {
     title: '综合发展',
     body: '丰富的社团、志愿服务、文体活动与实践平台，为学生提供面向社会的成长空间。',
     url: newsStudentUrl,
+    image: '/images/compact/life-student-development.jpg',
   },
 ]
 
 const campusScenes = [
   {
     title: '校门地标',
-    image: '/images/csu-sina-01.jpg',
+    image: '/images/compact/csu-sina-01.jpg',
   },
   {
     title: '湖畔楼宇',
-    image: '/images/csu-sina-02.jpg',
+    image: '/images/compact/csu-sina-02.jpg',
   },
 ]
 
 const lifeScenes = [
   {
     title: '校园入口',
-    image: '/images/csu-win3000-01.jpg',
+    image: '/images/compact/csu-win3000-01.jpg',
   },
 ]
 
 const changshaLinks = [
-  { label: '岳麓山', url: 'https://www.csyouji.cn/yls' },
-  { label: '橘子洲', url: 'https://www.yuelu.gov.cn/zjxq/xqsj/202506/t20250630_11901612.html' },
-  { label: '湘江新区', url: 'https://www.yuelu.gov.cn/zjxq/' },
-  { label: '马栏山视频', url: 'https://cyfz.csmls.gov.cn/' },
+  {
+    label: '岳麓山',
+    url: 'https://www.forestry.gov.cn/c/www/zrgzdt/639175.jhtml',
+    image: '/images/compact/changsha-yuelu-mountain.jpg',
+    position: 'center 42%',
+  },
+  {
+    label: '橘子洲',
+    url: 'https://www.forestry.gov.cn/c/www/zrgzdt/639175.jhtml',
+    image: '/images/compact/changsha-orange-isle.jpg',
+    position: 'center 46%',
+  },
+  {
+    label: '湘江新区',
+    url: 'https://xjxq.hunan.gov.cn/index_m.html',
+    image: '/images/compact/changsha-xiangjiang-new-area.jpg',
+    position: 'center 60%',
+  },
+  {
+    label: '马栏山',
+    url: 'https://cyfz.csmls.gov.cn/',
+    image: '/images/compact/changsha-malanshan.jpg',
+    position: 'center 48%',
+  },
+]
+
+const historyNodes = [
+  {
+    year: '1903年',
+    label: '实业教育源流',
+    image: '/images/compact/history-industrial-education.jpg',
+  },
+  {
+    year: '1914年',
+    label: '湘雅医学传承',
+    image: '/images/compact/history-xiangya-medicine.jpg',
+  },
+  {
+    year: '2000年',
+    label: '三校合并组建',
+    image: '/images/compact/history-campus-merger.jpg',
+  },
 ]
 </script>
 
 <template>
   <header class="topbar">
     <nav class="nav" aria-label="页面导航">
-      <a class="brand" href="#top" aria-label="中南大学介绍首页">
-        <span class="brand-mark">中</span>
-        <span>中南大学</span>
+      <a class="brand" href="#top" aria-label="中南大学非官方介绍首页">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="/images/csu-emblem.png" alt="" />
+        </span>
+        <span>中南大学非官方介绍</span>
       </a>
       <div class="nav-links">
         <a v-for="item in navItems" :key="item.href" :href="item.href">
@@ -160,7 +206,7 @@ const changshaLinks = [
             <img :src="scene.image" :alt="scene.title" />
           </figure>
           <figure>
-            <img src="/images/csu-maigoo-01.jpg" alt="中南大学校园风景" />
+            <img src="/images/compact/csu-maigoo-01.jpg" alt="中南大学校园风景" />
           </figure>
         </div>
       </div>
@@ -210,17 +256,13 @@ const changshaLinks = [
         </div>
 
         <div class="about-mosaic" aria-label="学校发展脉络">
-          <div>
-            <span>1903年</span>
-            <strong>实业教育源流</strong>
-          </div>
-          <div>
-            <span>1914年</span>
-            <strong>湘雅医学传承</strong>
-          </div>
-          <div>
-            <span>2000年</span>
-            <strong>三校合并组建</strong>
+          <div
+            v-for="node in historyNodes"
+            :key="node.year"
+            :style="{ backgroundImage: `linear-gradient(90deg, rgba(5, 28, 58, 0.86), rgba(7, 59, 115, 0.48)), url(${node.image})` }"
+          >
+            <span>{{ node.year }}</span>
+            <strong>{{ node.label }}</strong>
           </div>
         </div>
       </div>
@@ -241,6 +283,7 @@ const changshaLinks = [
             :key="feature.title"
             class="feature"
             :href="feature.url"
+            :style="{ backgroundImage: `linear-gradient(135deg, rgba(5, 28, 58, 0.9), rgba(7, 59, 115, 0.58)), url(${feature.image})` }"
             target="_blank"
             rel="noreferrer"
           >
@@ -281,7 +324,17 @@ const changshaLinks = [
             </p>
           </div>
           <div class="academic-scenes" aria-label="长沙相关入口">
-            <a v-for="link in changshaLinks" :key="link.label" :href="link.url" target="_blank" rel="noreferrer">
+            <a
+              v-for="link in changshaLinks"
+              :key="link.label"
+              :href="link.url"
+              :style="{
+                backgroundImage: `linear-gradient(135deg, rgba(5, 24, 52, 0.76), rgba(7, 59, 115, 0.42)), url(${link.image})`,
+                backgroundPosition: link.position,
+              }"
+              target="_blank"
+              rel="noreferrer"
+            >
               {{ link.label }}
             </a>
           </div>
@@ -313,6 +366,7 @@ const changshaLinks = [
               :key="item.title"
               class="life-item"
               :href="item.url"
+              :style="{ backgroundImage: `linear-gradient(90deg, rgba(7, 35, 70, 0.92), rgba(7, 59, 115, 0.64)), url(${item.image})` }"
               target="_blank"
               rel="noreferrer"
             >
