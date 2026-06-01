@@ -45,14 +45,14 @@ const features = [
 ]
 
 const disciplines = [
-  '材料科学与工程',
-  '冶金工程',
-  '矿业工程',
-  '交通运输工程',
-  '临床医学',
-  '土木工程',
-  '控制科学与工程',
-  '管理科学与工程',
+  { label: '材料科学与工程', url: 'https://mse.csu.edu.cn/' },
+  { label: '冶金工程', url: 'https://smse.csu.edu.cn/' },
+  { label: '矿业工程', url: 'https://srse.csu.edu.cn/' },
+  { label: '交通运输工程', url: 'https://stte.csu.edu.cn/' },
+  { label: '临床医学', url: 'https://xysm.csu.edu.cn/' },
+  { label: '土木工程', url: 'https://civil.csu.edu.cn/' },
+  { label: '控制科学与工程', url: 'https://soa.csu.edu.cn/' },
+  { label: '管理科学与工程', url: 'https://bs.csu.edu.cn/' },
 ]
 
 const lifeItems = [
@@ -167,7 +167,11 @@ const lifeItems = [
             </p>
           </div>
           <ul class="discipline-list" aria-label="学科方向">
-            <li v-for="discipline in disciplines" :key="discipline">{{ discipline }}</li>
+            <li v-for="discipline in disciplines" :key="discipline.label">
+              <a :href="discipline.url" target="_blank" rel="noreferrer">
+                {{ discipline.label }}
+              </a>
+            </li>
           </ul>
         </div>
 
